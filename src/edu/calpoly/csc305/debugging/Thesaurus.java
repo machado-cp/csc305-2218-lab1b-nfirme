@@ -12,8 +12,20 @@ public class Thesaurus {
     synonyms = new HashMap<>();
   }
 
-  public void addAlternatives(String word, String ... alternatives) {
-    synonyms.get(word).addAll(Arrays.asList(alternatives));
+  /**
+   * <p>Adds one or more alternative words to a thesaurus word entry.</p>
+   *
+   * @param word The amount of incoming damage
+   * @param alternatives The list of alternative words to add to the thesaurus
+   */
+
+  public void addAlternatives(String word, String... alternatives) {
+    List<String> altsArray = Arrays.asList(alternatives);
+    if (synonyms.get(word) == null) {
+      synonyms.put(word, altsArray);
+    } else {
+      synonyms.get(word).addAll(altsArray);
+    }
   }
 
   public List<String> alternatives(String word) {
